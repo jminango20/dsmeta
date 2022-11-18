@@ -1,6 +1,7 @@
 package com.jminango.dsmeta.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,7 +15,7 @@ public class Sale {
     private Integer visited;
     private Integer deals;
     private Double amount;
-    private LocalDateTime date;
+    private LocalDate date;
 
     public Sale() {
     }
@@ -59,11 +60,11 @@ public class Sale {
         this.amount = amount;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }
