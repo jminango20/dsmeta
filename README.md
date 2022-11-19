@@ -401,3 +401,79 @@ heroku git:remote -a <nome-do-app>
 git remote -v
 git subtree push --prefix backend heroku main
 ```
+
+# Integrar back end e front end e Implantar o front end
+
+## Passo: Primeira requisição com Axios e useEffect
+
+```
+yarn add axios@0.27.2
+```
+
+- COMMIT: Axios, useEffect first request
+
+## Passo: Listagem de vendas
+
+Definição da BASE_URL:
+
+```
+export const BASE_URL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8080";
+```
+
+- COMMIT: Sale listing
+
+## Passo: Passando as datas como argumento
+
+- COMMIT: Date update
+
+## Passo: Enviar notificação
+
+- COMMIT: Send notification
+
+## Passo: Mensagem Toast de confirmação
+
+```
+yarn add react-toastify@9.0.5
+```
+
+No App.tsx:
+
+```
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+```
+
+- COMMIT: Toast
+
+## Passo: Deploy no Netlify
+
+- Antes: acrescente window.React = React no seu main.tsx conforme abaixo, e salve um novo commit:
+
+```
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
+
+window.React = React
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
+```
+
+https://www.netlify.com/
+
+- Deploy básico
+
+  - Base directory: frontend
+  - Build command: yarn build
+  - Publish directory: frontend/dist
+  - Variáveis de ambiente:
+    - VITE_BACKEND_URL
+
+- Configurações adicionais
+  - Site settings -> Domain Management: (colocar o nome que você quiser)
+  - Deploys -> Trigger deploy
